@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LearningTrackRepository extends JpaRepository<LearningTrack, Long>{
     
-    //Comment
 }

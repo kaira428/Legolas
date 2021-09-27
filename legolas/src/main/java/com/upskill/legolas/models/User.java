@@ -171,5 +171,11 @@ public class User {
     public void setModuleProgresses(List<ModuleProgress> moduleProgresses) {
         this.moduleProgresses = moduleProgresses;
     }
+
+    @Override
+    public String toString() {
+        return "User [country=" + country + ", email=" + email + ", first_name=" + first_name + ", last_name="
+                + last_name + ", password=" + password + ", user_id=" + user_id + ", user_status=" + user_status + "]";
+    }
     
 }

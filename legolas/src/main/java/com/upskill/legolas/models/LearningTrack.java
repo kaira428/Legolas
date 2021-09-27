@@ -32,8 +32,7 @@ public class LearningTrack {
     @JoinColumn(name = "fk_learning_track_id")
     private List<LearningTrackUser> learningTrackUser;
 
-    @OneToMany(fetch=FetchType.EAGER)
-    @JoinColumn(name = "fk_learning_track_id")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "learningTrack")
     private List<Module> modules;
 
     public Long getLearning_track_id() {

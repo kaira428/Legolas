@@ -1,4 +1,4 @@
-use dashboard;
+use legolas;
 
 -- insert user data
 INSERT INTO `users` (`user_id`,`email`,`password`,`first_name`,`last_name`,`mobile`,`country`, `user_status`) VALUES (1,'kbillington0@about.com','123456','Katlin','Billington','659-188-1025','Singapore', 'Active');

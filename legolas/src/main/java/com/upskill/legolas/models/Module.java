@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -28,16 +29,20 @@ public class Module {
     @Size(max=50)
     private String module_name;
 
-    @Column(name = "fk_learning_track_id")
-    private Long fk_learning_track_id;
+    // @Column(name = "fk_learning_track_id")
+    // private Long fk_learning_track_id;
 
-    @OneToMany(fetch=FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_module_id")
     private List<Topic> topics;
 
     @OneToMany
     @JoinColumn(name = "fk_module_id")
     private List<ModuleProgress> moduleProgresses;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "fk_learning_track_id")
+    private LearningTrack learningTrack;
 
     public Long getModule_id() {
         return module_id;
@@ -55,13 +60,13 @@ public class Module {
         this.module_name = module_name;
     }
 
-    public Long getFk_learning_track_id() {
-        return fk_learning_track_id;
-    }
+    // public Long getFk_learning_track_id() {
+    //     return fk_learning_track_id;
+    // }
 
-    public void setFk_learning_track_id(Long fk_learning_track_id) {
-        this.fk_learning_track_id = fk_learning_track_id;
-    }
+    // public void setFk_learning_track_id(Long fk_learning_track_id) {
+    //     this.fk_learning_track_id = fk_learning_track_id;
+    // }
 
     public List<Topic> getTopics() {
         return topics;
@@ -79,9 +84,17 @@ public class Module {
         this.moduleProgresses = moduleProgresses;
     }
 
+    public LearningTrack getLearningTrack() {
+        return learningTrack;
+    }
+
+    public void setLearningTrack(LearningTrack learningTrack) {
+        this.learningTrack = learningTrack;
+    }
+
     @Override
     public String toString() {
-        return "Module [fk_learning_track_id=" + fk_learning_track_id + ", module_id=" + module_id + ", module_name="
+        return "Module [fk_learning_track_id=" + ", module_id=" + module_id + ", module_name="
                 + module_name + "]";
     }
        

@@ -46,19 +46,19 @@ public class TopicUser {
         this.fk_topic_id = fk_topic_id;
     }
 
-    public boolean isCompleted() {
+    public boolean getIsCompleted() {
         return isCompleted;
     }
 
-    public void setCompleted(boolean isCompleted) {
+    public void setIsCompleted(boolean isCompleted) {
         this.isCompleted = isCompleted;
     }
 
-    public boolean isCertified() {
+    public boolean getIsCertified() {
         return isCertified;
     }
 
-    public void setCertified(boolean isCertified) {
+    public void setIsCertified(boolean isCertified) {
         this.isCertified = isCertified;
     }
     

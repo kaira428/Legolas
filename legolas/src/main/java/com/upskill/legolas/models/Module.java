@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +31,7 @@ public class Module {
     @Column(name = "fk_learning_track_id")
     private Long fk_learning_track_id;
 
-    @OneToMany
+    @OneToMany(fetch=FetchType.EAGER)
     @JoinColumn(name = "fk_module_id")
     private List<Topic> topics;
 
@@ -76,6 +77,12 @@ public class Module {
 
     public void setModuleProgresses(List<ModuleProgress> moduleProgresses) {
         this.moduleProgresses = moduleProgresses;
+    }
+
+    @Override
+    public String toString() {
+        return "Module [fk_learning_track_id=" + fk_learning_track_id + ", module_id=" + module_id + ", module_name="
+                + module_name + "]";
     }
        
 }

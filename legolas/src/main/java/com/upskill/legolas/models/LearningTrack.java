@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ public class LearningTrack {
     @JoinColumn(name = "fk_learning_track_id")
     private List<LearningTrackUser> learningTrackUser;
 
-    @OneToMany
+    @OneToMany(fetch=FetchType.EAGER)
     @JoinColumn(name = "fk_learning_track_id")
     private List<Module> modules;
 
@@ -66,5 +67,12 @@ public class LearningTrack {
     public void setModules(List<Module> modules) {
         this.modules = modules;
     }
+
+    @Override
+    public String toString() {
+        return "LearningTrack [learning_track_id=" + learning_track_id + ", learning_track_name=" + learning_track_name
+                + "]";
+    }
+    
     
 }

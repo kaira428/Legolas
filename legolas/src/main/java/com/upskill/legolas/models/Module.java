@@ -2,6 +2,7 @@ package com.upskill.legolas.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,17 +33,19 @@ public class Module {
     // @Column(name = "fk_learning_track_id")
     // private Long fk_learning_track_id;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "fk_module_id")
-    private List<Topic> topics;
+    // @OneToMany(fetch = FetchType.EAGER)
+    // @JoinColumn(name = "fk_module_id")
+    // private List<Topic> topics;
 
-    @OneToMany
-    @JoinColumn(name = "fk_module_id")
+    @OneToMany(mappedBy = "module", cascade = CascadeType.ALL)
     private List<ModuleProgress> moduleProgresses;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "fk_learning_track_id")
     private LearningTrack learningTrack;
+
+    @OneToMany(mappedBy = "module", cascade = CascadeType.ALL)
+    private List<Topic> topics;
 
     public Long getModule_id() {
         return module_id;

@@ -2,12 +2,12 @@ package com.upskill.legolas.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -60,20 +60,16 @@ public class User {
     @Size(max=20)
     private String user_status;
 
-    @OneToMany
-    @JoinColumn(name = "fk_user_id")
+    @OneToMany(mappedBy = "user", cascade={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH})
     private List<Role> roles;
 
-    @OneToMany
-    @JoinColumn(name = "fk_user_id")
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
     private List<LearningTrackUser> learningTrackUsers;
 
-    @OneToMany
-    @JoinColumn(name = "fk_user_id")
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
     private List<TopicUser> topicUsers;
 
-    @OneToMany
-    @JoinColumn(name = "fk_user_id")
+    @OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
     private List<ModuleProgress> moduleProgresses;
 
     public Long getUser_id() {

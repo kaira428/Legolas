@@ -44,7 +44,7 @@ public class Module {
     @JoinColumn(name = "fk_learning_track_id")
     private LearningTrack learningTrack;
 
-    @OneToMany(mappedBy = "module", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "module", cascade = CascadeType.ALL)
     private List<Topic> topics;
 
     public Long getModule_id() {

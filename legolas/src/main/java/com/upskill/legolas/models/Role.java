@@ -59,9 +59,6 @@ public class Role {
 
     @Override
     public String toString() {
-        return "Role [role=" + role + ", user=" + user + "]";
-    }
-
-    
-    
+        return "Role [role=" + role + "]";
+    }  
 }
